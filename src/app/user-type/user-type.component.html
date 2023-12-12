@@ -1,0 +1,8 @@
+<mat-form-field>
+  <mat-label>User type</mat-label>
+  <mat-select (selectionChange)="onUserTypeSelected($event.value)" required>
+    <mat-option *ngFor="let userType of userTypes" [value]="userType.value">
+      {{ userType.viewValue }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

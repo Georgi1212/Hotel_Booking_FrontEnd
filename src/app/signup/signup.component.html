@@ -1,0 +1,75 @@
+<mat-card-header><h1>BookVoyage</h1></mat-card-header>
+<div id="login-form" class="signup-main">
+  <mat-card>
+    <mat-card-header><h2>Signup form</h2></mat-card-header>
+    <form [formGroup]="signupForm" (ngSubmit)="signup()">
+      <div>
+        <mat-form-field>
+          <mat-label>Username:</mat-label>
+          <input matInput name="username" type="text" required formControlName="username">
+          <mat-error *ngIf="this.signupForm.get('username')?.hasError('required')">Username must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Email:</mat-label>
+          <input matInput name="email" type="email" required formControlName="email">
+          <mat-error *ngIf="this.signupForm.get('email')?.hasError('email')">Email must be valid</mat-error>
+        </mat-form-field>
+
+        <!--        <app-password formControlName="passwordGroup"></app-password>-->
+        <mat-form-field>
+          <mat-label>Password:</mat-label>
+          <input matInput name="password" type="password" required formControlName="password">
+          <mat-error *ngIf="this.signupForm.get('password')?.hasError('required')">Password is required</mat-error>
+          <mat-error *ngIf="this.signupForm.get('password')?.hasError('pattern')">Password must meet the requirements</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Confirm Password:</mat-label>
+          <input matInput name="confirmPassword" type="password" required formControlName="confirmPassword">
+          <mat-error *ngIf="this.signupForm.get('confirmPassword')?.hasError('required')">Confirm Password is required</mat-error>
+          <mat-error *ngIf="passwordMismatch">Passwords do not match</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>First Name:</mat-label>
+          <input matInput name="firstName" type="text" required formControlName="firstName">
+          <!--          <mat-error *ngIf="signupForm.get('firstName')?.hasError('required')">First Name is required</mat-error>-->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Last Name:</mat-label>
+          <input matInput name="lastName" type="text" required formControlName="lastName">
+          <!--          <mat-error *ngIf="signupForm.get('lastName')?.hasError('required')">Last Name is required</mat-error>-->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Phone number:</mat-label>
+          <input matInput name="phoneNumber" type="text" required formControlName="phoneNumber">
+          <mat-error *ngIf="this.signupForm.get('phoneNumber')?.hasError('pattern')">Phone number must meet the requirements</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Date of Birth:</mat-label>
+          <input matInput [matDatepicker]="datePicker" name="dateOfBirth" type="text" required formControlName="dateOfBirth">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matSuffix [for]="datePicker"></mat-datepicker-toggle>
+          <mat-datepicker #datePicker></mat-datepicker>
+          <!--          <mat-error *ngIf="signupForm.get('dateOfBirth')?.hasError('required')">Date of Birth is required</mat-error>-->
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Address:</mat-label>
+          <textarea matInput name="address" required formControlName="address"></textarea>
+          <!--          <mat-error *ngIf="signupForm.get('address')?.hasError('required')">Address is required</mat-error>-->
+        </mat-form-field>
+        <br/>
+        <app-user-type></app-user-type>
+      </div>
+      <div>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!signupForm.valid">Sign up</button>
+      </div>
+      <br/>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <app-info-email *ngIf="isInfoMessage" [infoMessage]="infoMessage" (closeModal)="closeModal()"></app-info-email>
+
+    </form>
+    <br>
+    <p>Already have an account? <a [routerLink]="['../login']">Login</a></p>
+  </mat-card>
+</div>
