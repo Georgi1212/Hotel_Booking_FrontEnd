@@ -10,9 +10,9 @@
           <mat-error *ngIf="this.signupForm.get('username')?.hasError('required')">Username must be valid</mat-error>
         </mat-form-field>
         <mat-form-field>
-          <mat-label>Email:</mat-label>
+          <mat-label>Email (gmail):</mat-label>
           <input matInput name="email" type="email" required formControlName="email">
-          <mat-error *ngIf="this.signupForm.get('email')?.hasError('email')">Email must be valid</mat-error>
+          <mat-error *ngIf="this.signupForm.get('email')?.hasError('email')">Email must be valid (end with "gmail")</mat-error>
         </mat-form-field>
 
         <!--        <app-password formControlName="passwordGroup"></app-password>-->

@@ -1,7 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import {ResetPasswordEmailService} from "./reset-password-email-service";
 
-describe('ResetPasswordEmailServiceService', () => {
+describe('ResetPasswordEmailService', () => {
   let service: ResetPasswordEmailService;
 
   beforeEach(() => {

@@ -36,7 +36,7 @@ export class LoginComponent {
     this.authService.login(this.loginForm.value).subscribe({
       next: () => {
         localStorage.setItem('email', this.loginForm.get('email')?.value);
-        this.router.navigate(['welcomePage']).then(r=>r);
+        this.router.navigate(['welcome-page']).then(r=>r);
       },
       error: () => {
         this.errorMessage = 'Email or password is incorrect';

@@ -1,0 +1,26 @@
+<div *ngIf="availableHotels.length > 0">
+  <h2>Available Hotels</h2>
+  <button mat-raised-button color="primary" (click)="backToFilter()">Back to filters</button>
+  <ul>
+    <li *ngFor="let hotel of availableHotels">
+      <mat-card class="card">
+        <mat-card-header>
+          <mat-card-title-group>
+            <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
+            <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
+            <img mat-card-lg-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
+          </mat-card-title-group>
+        </mat-card-header>
+        <mat-card-content>
+          {{hotel.description}}
+          <br/>
+          <br/>
+          Rate: <strong>{{hotel.rate}}</strong>
+        </mat-card-content>
+      </mat-card>
+    </li>
+  </ul>
+</div>
+<div *ngIf="availableHotels.length === 0">
+  <p>No available hotels found for the selected criteria.</p>
+</div>

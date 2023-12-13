@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -15,6 +15,9 @@ import {UserTypeComponent} from "./user-type/user-type.component";
 import {VerifyEmailComponent} from "./verify-email/verify-email.component";
 import {ResetPasswordEmailComponent} from "./reset-password-email/reset-password-email.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
+import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
+import {InitialFilterService} from "./services/initialFilter-service";
+import {HotelListComponent} from "./hotel-list/hotel-list.component";
 
 
 @NgModule({
@@ -26,7 +29,9 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
     UserTypeComponent,
     VerifyEmailComponent,
     ResetPasswordEmailComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    WelcomePageComponent,
+    HotelListComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +40,8 @@ import {ResetPasswordComponent} from "./reset-password/reset-password.component"
     BrowserAnimationsModule,
     AngularMaterialModule,
     AppRoutingModuleModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgOptimizedImage
   ],
   exports: [CommonModule],
   providers: [],
