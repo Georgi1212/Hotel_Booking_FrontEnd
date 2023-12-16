@@ -1,14 +1,14 @@
-<div *ngIf="availableHotels.length > 0">
-  <h2>Available Hotels</h2>
+<div *ngIf="hotels.length > 0">
   <button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
   <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
-  <button mat-raised-button color="primary" (click)="backToFilter()">Back to filters</button>
+  <br/>
+  <h2>Your hotels</h2>
   <ul>
-    <li *ngFor="let hotel of availableHotels">
+    <li *ngFor="let hotel of hotels">
       <mat-card class="card">
         <mat-card-header>
-            <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
-            <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
+          <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
+          <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
         </mat-card-header>
         <img mat-card-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
         <mat-card-content>
@@ -19,12 +19,12 @@
           <br/>
         </mat-card-content>
         <mat-card-actions>
-          <button mat-raised-button color="primary" (click)="viewHotelDetails(hotel.hotelId)">View Details</button>
+          <button mat-raised-button color="primary" (click)="viewHotelRooms(hotel.hotelId)">View Rooms & Details</button>
         </mat-card-actions>
       </mat-card>
     </li>
   </ul>
 </div>
-<div *ngIf="availableHotels.length === 0">
-  <p>No available hotels found for the selected criteria.</p>
+<div *ngIf="hotels.length === 0">
+  <p>No available hotels found.</p>
 </div>

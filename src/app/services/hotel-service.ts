@@ -1,7 +1,9 @@
 import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {DatePipe} from "@angular/common";
+import {Hotel} from "../model/hotel";
+import {Room} from "../model/room";
+import {RoomWithId} from "../model/roomWithID";
 
 
 @Injectable({
@@ -14,10 +16,11 @@ export class HotelService{
     this.token = localStorage.getItem('token') || '';
     this.headers = new HttpHeaders().set('Authorization', `Bearer ${this.token}`);
   }
-  private formatDate(date: Date): string {
-    const year = date.getFullYear();
-    const month = ('0' + (date.getMonth() + 1)).slice(-2);
-    const day = ('0' + date.getDate()).slice(-2);
+  formatDate(date: Date): string {
+    const newDate = new Date(date);
+    const year = newDate.getFullYear();
+    const month = ('0' + (newDate.getMonth() + 1)).slice(-2);
+    const day = ('0' + newDate.getDate()).slice(-2);
     return `${year}-${month}-${day}`;
   }
   getUniqueCountries(): Observable<string[]>{
@@ -27,6 +30,10 @@ export class HotelService{
    getUniqueCities(country: string) : Observable<any>{
      const formattedCountry = encodeURIComponent(country);
     return this.http.get(`http://localhost:8080/hotels/${formattedCountry}/cities`, {headers: this.headers});
+   }
+
+   getHotelById(hotelId: number) : Observable<Hotel>{
+    return this.http.get<Hotel>(`http://localhost:8080/hotels/hotel/${hotelId}`, {headers : this.headers});
    }
 
    getAvailableHotels(country: string, city: string, checkIn: Date, checkOut: Date) : Observable<any> {
@@ -44,4 +51,31 @@ export class HotelService{
     return this.http.get('http://localhost:8080/hotels/available', {params: params, headers: this.headers});
    }
 
+   getHotelByCountryCityStreet(country: string, city: string, street: string) : Observable<number> {
+     const formattedCountry = encodeURIComponent(country);
+     const formattedCity = encodeURIComponent(city);
+     const formattedStreet = encodeURIComponent(street);
+
+     return this.http.get<number>(`http://localhost:8080/hotels/${formattedCountry}/${formattedCity}/${formattedStreet}`,
+       {headers: this.headers});
+   }
+
+   getAvailableRooms(hotelId: number, checkIn: Date, checkOut: Date) : Observable<RoomWithId[]> {
+     const formattedCheckIn = this.formatDate(checkIn);
+     const formattedCheckOut = this.formatDate(checkOut);
+
+     const params = new HttpParams()
+       .set('checkIn', formattedCheckIn || '')
+       .set('checkOut', formattedCheckOut || '');
+
+     return this.http.get<RoomWithId[]>(`http://localhost:8080/hotels/${hotelId}/availableRooms`, {params: params, headers: this.headers});
+   }
+
+   getHotelsByEmail(email: string) : Observable<any>{
+     return this.http.get(`http://localhost:8080/hotels/user/${email}`, {headers: this.headers});
+   }
+
+   getAllRoomsByHotelId(hotelId: number) : Observable<RoomWithId[]> {
+     return this.http.get<RoomWithId[]>(`http://localhost:8080/hotels/${hotelId}/rooms`, {headers: this.headers});
+   }
 }

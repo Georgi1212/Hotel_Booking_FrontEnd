@@ -1,7 +1,7 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {CommonModule, NgOptimizedImage} from '@angular/common';
 import {BrowserModule} from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import {AngularMaterialModule} from './angular-material/angular-material.module'
 import {AppRoutingModuleModule} from "./app-routing-module/app-routing-module.module";
@@ -16,8 +16,14 @@ import {VerifyEmailComponent} from "./verify-email/verify-email.component";
 import {ResetPasswordEmailComponent} from "./reset-password-email/reset-password-email.component";
 import {ResetPasswordComponent} from "./reset-password/reset-password.component";
 import {WelcomePageComponent} from "./welcome-page/welcome-page.component";
-import {InitialFilterService} from "./services/initialFilter-service";
 import {HotelListComponent} from "./hotel-list/hotel-list.component";
+import {HotelDetailsComponent} from "./hotel-details/hotel-details.component";
+import {ImageSliderComponent} from "./image-slider/image-slider.component";
+import {UserProfileComponent} from "./user-profile/user-profile.component";
+import {UpdateUserComponent} from "./update-user/update-user.component";
+import {ErrorModalComponent} from "./error-modal/error-modal.component";
+import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
+import {AdminHotelRoomsDetailsComponent} from "./admin-hotel-rooms-details/admin-hotel-rooms-details.component";
 
 
 @NgModule({
@@ -31,7 +37,14 @@ import {HotelListComponent} from "./hotel-list/hotel-list.component";
     ResetPasswordEmailComponent,
     ResetPasswordComponent,
     WelcomePageComponent,
-    HotelListComponent
+    HotelListComponent,
+    HotelDetailsComponent,
+    ImageSliderComponent,
+    UserProfileComponent,
+    UpdateUserComponent,
+    ErrorModalComponent,
+    AdminPanelComponent,
+    AdminHotelRoomsDetailsComponent
   ],
   imports: [
     BrowserModule,
@@ -41,7 +54,7 @@ import {HotelListComponent} from "./hotel-list/hotel-list.component";
     AngularMaterialModule,
     AppRoutingModuleModule,
     ReactiveFormsModule,
-    NgOptimizedImage
+    NgOptimizedImage,
   ],
   exports: [CommonModule],
   providers: [],
@@ -49,4 +62,3 @@ import {HotelListComponent} from "./hotel-list/hotel-list.component";
 })
 export class AppModule { }
 
-//platformBrowser().bootstrapModule(AppModule).then(r => r);

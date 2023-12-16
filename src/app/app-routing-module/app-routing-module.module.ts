@@ -8,12 +8,20 @@ import {ResetPasswordComponent} from "../reset-password/reset-password.component
 import {WelcomePageComponent} from "../welcome-page/welcome-page.component";
 import {AuthGuardService} from "../services/authGuard.service";
 import {HotelListComponent} from "../hotel-list/hotel-list.component";
+import {HotelDetailsComponent} from "../hotel-details/hotel-details.component";
+import {UserProfileComponent} from "../user-profile/user-profile.component";
+import {AdminPanelComponent} from "../admin-panel/admin-panel.component";
+import {AdminHotelRoomsDetailsComponent} from "../admin-hotel-rooms-details/admin-hotel-rooms-details.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
   { path: 'signup', component: SignupComponent},
   { path: 'welcome-page', component: WelcomePageComponent, canActivate:[AuthGuardService]},
   { path: 'hotel-list', component: HotelListComponent, canActivate:[AuthGuardService]},
+  { path: 'hotel-details/:hotelId', component: HotelDetailsComponent, canActivate:[AuthGuardService]},
+  { path: 'profile', component: UserProfileComponent, canActivate:[AuthGuardService]},
+  { path: 'admin-panel', component: AdminPanelComponent, canActivate:[AuthGuardService]},
+  { path: 'admin-panel/hotel-rooms-details/:hotelId', component: AdminHotelRoomsDetailsComponent, canActivate:[AuthGuardService]},
   { path: 'users/verifyEmail/:verifyCode', component: VerifyEmailComponent},
   { path: 'sendPasswordResetEmail', component: ResetPasswordEmailComponent},
   { path: 'resetPassword/:verifyCode', component: ResetPasswordComponent},

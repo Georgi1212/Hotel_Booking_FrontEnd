@@ -1,0 +1,40 @@
+<div id="update-form" [formGroup]="userForm">
+  <mat-form-field>
+    <mat-label>Username</mat-label>
+    <input matInput id="username-input" formControlName="username">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>First name</mat-label>
+    <input matInput id="firstName-input" formControlName="firstName" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Last name</mat-label>
+    <input matInput id="lastName-input" formControlName="lastName" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Phone number</mat-label>
+    <input matInput id="phoneNumber-input" formControlName="phoneNumber" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Choose a date of birth</mat-label>
+    <input matInput  [matDatepicker]="picker" id="date-input" formControlName="dateOfBirth">
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Address</mat-label>
+    <input matInput id="address-input" formControlName="address" >
+  </mat-form-field>
+
+  <button type="submit" mat-stroked-button color="primary" (click)="updateUser()" >Update Information</button>
+
+  <app-error-modal *ngIf="error" [errorMessage]="errorMessage" (closeModal)="closeModal()"></app-error-modal>
+
+
+</div>

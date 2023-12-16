@@ -1,0 +1,57 @@
+<p>
+  <mat-toolbar id="header">
+    <span id="header_toolbar">VoyageBooking</span>
+    <span class="spacer"></span>
+    <button mat-stroked-button color="primary" class="header-btn" (click)="back()">Back</button>
+    <button mat-stroked-button color="primary" class="header-btn" (click)="logOut()" >Log Out</button>
+  </mat-toolbar>
+</p>
+
+<div id="profile_info">
+  <mat-card class="example-card" *ngIf="user_info">
+    <mat-card-content>
+      <h3>Profile information:</h3>
+      <mat-list>
+        <mat-list-item>
+          <span matListItemTitle>Username</span>
+          <span matListItemLine>{{user_info.username}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Email</span>
+          <span matListItemLine>{{user_info.email}}</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>First Name</span>
+          <span matListItemLine *ngIf="user_info.firstName">{{user_info.firstName}}</span>
+          <span matListItemLine *ngIf="!user_info.firstName">-</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Last Name</span>
+          <span matListItemLine *ngIf="user_info.lastName">{{user_info.lastName}}</span>
+          <span matListItemLine *ngIf="!user_info.lastName">-</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Phone number</span>
+          <span matListItemLine *ngIf="user_info.dateOfBirth">{{user_info.phoneNumber}}</span>
+          <span matListItemLine *ngIf="!user_info.phoneNumber">-</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Date of Birth</span>
+          <span matListItemLine *ngIf="user_info.dateOfBirth">{{user_info.dateOfBirth}}</span>
+          <span matListItemLine *ngIf="!user_info.dateOfBirth">-</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>Address</span>
+          <span matListItemLine *ngIf="user_info.address">{{user_info.address}}</span>
+          <span matListItemLine *ngIf="!user_info.address">-</span>
+        </mat-list-item>
+        <mat-list-item>
+          <span matListItemTitle>User type</span>
+          <span matListItemLine *ngIf="user_info.address">{{user_info.userType}}</span>
+          <span matListItemLine *ngIf="!user_info.userType">-</span>
+        </mat-list-item>
+      </mat-list>
+    </mat-card-content>
+    <button type="button" mat-stroked-button color="primary" (click)="updateUser()">Update Profile</button>
+  </mat-card>
+</div>

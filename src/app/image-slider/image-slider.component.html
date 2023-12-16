@@ -1,0 +1,21 @@
+<div class="slider">
+  <div>
+    <div (click)="goToPrevious()" class="leftArrow">❰</div>
+    <div (click)="goToNext()" class="rightArrow">❱</div>
+  </div>
+  <div class="slide" *ngIf="slides && slides.length > 0">
+    <img mat-card-xl-image [src]="this.slides[this.currentIndex].imageUrl"  alt="Room image"/>
+  </div>
+  <div class="dotsContainer">
+    <div
+      *ngFor="let slide of slides; let slideIndex = index"
+      class="dot"
+      (click)="goToSlide(slideIndex)"
+    >
+      <br/>
+      <br/>
+      <br/>
+      ●
+    </div>
+  </div>
+</div>

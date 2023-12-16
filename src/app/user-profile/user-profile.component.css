@@ -1,0 +1,32 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.header-btn{
+  margin: 10px;
+  background: lightblue;
+}
+#header{
+  background: lightskyblue;
+}
+#title{
+  display: flex;
+  justify-content: center;
+  font-size: 25px;
+  color: darkblue;
+}
+
+.example-card {
+  max-width: 400px;
+  margin-bottom: 8px;
+}
+.example-list-wrapping {
+  max-width: 500px;
+}
+#profile_info{
+
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100vh;
+}

@@ -1,0 +1,62 @@
+<button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
+<button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+<div *ngIf="hotelDetails">
+  <h2>{{ hotelDetails.hotelName }} - {{ hotelDetails.city }}, {{ hotelDetails.country }}</h2>
+
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>{{ hotelDetails.hotelName }}</mat-card-title>
+      <mat-card-subtitle>{{ hotelDetails.city }}, {{ hotelDetails.country }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <img mat-card-lg-image [src]="hotelDetails.hotelImageUrl" alt="Hotel Image">
+
+    <mat-card-content>
+      <p>{{ hotelDetails.hotelDescription || 'No hotel description available' }}</p>
+      <p>Address: {{ hotelDetails.street }}</p>
+    </mat-card-content>
+  </mat-card>
+
+  <h3>Room Availability for hotel "{{hotelDetails.hotelName}}" for period <strong>{{startDate}}-{{endDate}}</strong>:</h3>
+
+  <div *ngIf="availableRooms && availableRooms.length > 0">
+    <mat-list-item *ngFor="let availability of availableRooms">
+      <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                             (closed)="panelOpenState = false">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ availability.roomSizeTypeDto.roomType }} for {{ availability.roomSizeTypeDto.roomCapacity }}
+          </mat-panel-title>
+          <mat-panel-description>
+            Price for a night: ${{ availability.roomPrice.toFixed(2) }}
+          </mat-panel-description>
+        </mat-expansion-panel-header>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        <!--image slider component will be here-->
+        <div style="width: 500px; height: 200px; margin: 0 auto">
+          <app-image-slider [slides]="getSlidesForRoom(availability.roomId)"></app-image-slider> <!--getSlidesForRoom(availability.roomId)-->
+        </div>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+          <br/>
+        <p>Description: {{ availability.description || 'No room description available' }}</p>
+        <p>Number of adults: {{ availability.numAdults }}</p>
+        <p>Number of children: {{availability.numChildren}}</p>
+        <br/>
+          <button mat-raised-button color="primary" >Book the room</button> <!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
+        </mat-expansion-panel>
+      </mat-accordion>
+    </mat-list-item>
+  </div>
+
+  <div *ngIf="!availableRooms || availableRooms.length === 0">
+    <p>No room availability details found.</p>
+  </div>
+</div>
