@@ -1,0 +1,44 @@
+<mat-card-header><h1>BookVoyage</h1></mat-card-header>
+<div id="add-room-form" class="signup-main">
+  <mat-card>
+    <mat-card-header><h2>Add hotel information</h2></mat-card-header>
+    <form [formGroup]="addHotelForm" (ngSubmit)="addHotel()">
+      <div>
+        <mat-form-field>
+          <mat-label>Hotel name:</mat-label>
+          <input matInput name="hotelName" type="text" required formControlName="hotelName">
+          <mat-error *ngIf="this.addHotelForm.get('hotelName')?.hasError('required')">Hotel name must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Street:</mat-label>
+          <input matInput name="street" type="text" required formControlName="street">
+          <mat-error *ngIf="this.addHotelForm.get('street')?.hasError('required')">Street must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>City:</mat-label>
+          <input matInput name="city" type="text" required formControlName="city">
+          <mat-error *ngIf="this.addHotelForm.get('city')?.hasError('required')">City must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Country:</mat-label>
+          <input matInput name="country" type="text" required formControlName="country">
+          <mat-error *ngIf="this.addHotelForm.get('country')?.hasError('required')">Country must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Description:</mat-label>
+          <textarea matInput name="hotelDescription" required formControlName="hotelDescription"></textarea>
+        </mat-form-field>
+        <br/>
+      </div>
+      <div>
+        <br/>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!addHotelForm.valid">+ Add</button>
+      </div>
+      <br/>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <app-info-email *ngIf="isInfoMessage" [infoMessage]="infoMessage" (closeModal)="closeModal()"></app-info-email>
+      <br/>
+    </form>
+  </mat-card>
+</div>

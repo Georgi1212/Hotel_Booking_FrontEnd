@@ -10,7 +10,7 @@
           <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
           <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
+        <img mat-card-lg-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
         <mat-card-content>
           {{hotel.description}}
           <br/>
@@ -19,11 +19,14 @@
           <br/>
         </mat-card-content>
         <mat-card-actions>
+          <button mat-raised-button color="primary" (click)="updateHotelImage(hotel.hotelId)">Update hotel image</button>
+          <br/>
           <button mat-raised-button color="primary" (click)="viewHotelRooms(hotel.hotelId)">View Rooms & Details</button>
         </mat-card-actions>
       </mat-card>
     </li>
   </ul>
+  <button mat-raised-button color="primary" (click)="addHotel()">+ Add hotel</button>
 </div>
 <div *ngIf="hotels.length === 0">
   <p>No available hotels found.</p>

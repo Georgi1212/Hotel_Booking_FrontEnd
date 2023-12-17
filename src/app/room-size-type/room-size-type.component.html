@@ -1,0 +1,17 @@
+<mat-form-field>
+  <mat-label>Room type</mat-label>
+  <mat-select (selectionChange)="onRoomTypeSelected($event.value)" required>
+    <mat-option *ngFor="let roomSizeType of roomSizes" [value]="roomSizeType">
+      {{ roomSizeType }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<p>for (number of people):</p>
+<mat-form-field>
+  <mat-label>Room capacity</mat-label>
+  <mat-select (selectionChange)="onRoomCapacitySelected($event.value)" required>
+    <mat-option *ngFor="let roomSizeType of filteredRoomSizeType" [value]="roomSizeType.roomCapacity">
+      {{ roomSizeType.roomCapacity }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>

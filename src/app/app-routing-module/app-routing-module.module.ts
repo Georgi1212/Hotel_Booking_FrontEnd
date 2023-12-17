@@ -12,6 +12,8 @@ import {HotelDetailsComponent} from "../hotel-details/hotel-details.component";
 import {UserProfileComponent} from "../user-profile/user-profile.component";
 import {AdminPanelComponent} from "../admin-panel/admin-panel.component";
 import {AdminHotelRoomsDetailsComponent} from "../admin-hotel-rooms-details/admin-hotel-rooms-details.component";
+import {AddRoomComponent} from "../add-room/add-room.component";
+import {AddHotelComponent} from "../add-hotel/add-hotel.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -22,6 +24,8 @@ const routes: Routes = [
   { path: 'profile', component: UserProfileComponent, canActivate:[AuthGuardService]},
   { path: 'admin-panel', component: AdminPanelComponent, canActivate:[AuthGuardService]},
   { path: 'admin-panel/hotel-rooms-details/:hotelId', component: AdminHotelRoomsDetailsComponent, canActivate:[AuthGuardService]},
+  { path: ':hotelId/add-room/newRoom', component: AddRoomComponent, canActivate:[AuthGuardService]},
+  { path: 'newHotel', component: AddHotelComponent, canActivate:[AuthGuardService]},
   { path: 'users/verifyEmail/:verifyCode', component: VerifyEmailComponent},
   { path: 'sendPasswordResetEmail', component: ResetPasswordEmailComponent},
   { path: 'resetPassword/:verifyCode', component: ResetPasswordComponent},

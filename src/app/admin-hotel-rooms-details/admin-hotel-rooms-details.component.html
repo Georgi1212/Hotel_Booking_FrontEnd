@@ -17,6 +17,8 @@
     </mat-card-content>
   </mat-card>
 
+  <button mat-raised-button color="primary" (click)="toAddRoom(hotelId)">+ Add room</button>
+
   <h3>All rooms for hotel "{{hotelDetails.hotelName}}":</h3>
 
   <div *ngIf="rooms && rooms.length > 0">
@@ -50,7 +52,7 @@
           <p>Number of adults: {{ room.numAdults }}</p>
           <p>Number of children: {{room.numChildren}}</p>
           <br/>
-          <!--<button mat-raised-button color="primary" >Book the room</button>--> <!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
+          <button mat-raised-button color="primary" (click)="addPhotoToRoom(hotelId, room.roomId)">+ Add photos</button><!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
         </mat-expansion-panel>
       </mat-accordion>
     </mat-list-item>

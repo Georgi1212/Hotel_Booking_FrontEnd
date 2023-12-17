@@ -24,6 +24,11 @@ import {UpdateUserComponent} from "./update-user/update-user.component";
 import {ErrorModalComponent} from "./error-modal/error-modal.component";
 import {AdminPanelComponent} from "./admin-panel/admin-panel.component";
 import {AdminHotelRoomsDetailsComponent} from "./admin-hotel-rooms-details/admin-hotel-rooms-details.component";
+import {RoomSizeTypeComponent} from "./room-size-type/room-size-type.component";
+import {AddRoomComponent} from "./add-room/add-room.component";
+import {AddPhotosRoomComponent} from "./add-photos-room/add-photos-room.component";
+import {AddHotelComponent} from "./add-hotel/add-hotel.component";
+import {AddPhotoHotelComponent} from "./add-photo-hotel/add-photo-hotel.component";
 
 
 @NgModule({
@@ -44,7 +49,12 @@ import {AdminHotelRoomsDetailsComponent} from "./admin-hotel-rooms-details/admin
     UpdateUserComponent,
     ErrorModalComponent,
     AdminPanelComponent,
-    AdminHotelRoomsDetailsComponent
+    AdminHotelRoomsDetailsComponent,
+    RoomSizeTypeComponent,
+    AddRoomComponent,
+    AddPhotosRoomComponent,
+    AddHotelComponent,
+    AddPhotoHotelComponent
   ],
   imports: [
     BrowserModule,

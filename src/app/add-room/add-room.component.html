@@ -1,0 +1,38 @@
+<mat-card-header><h1>BookVoyage</h1></mat-card-header>
+<div id="add-room-form" class="signup-main">
+  <mat-card>
+    <mat-card-header><h2>Add room information</h2></mat-card-header>
+    <form [formGroup]="addRoomForm" (ngSubmit)="addRoom()">
+      <div>
+        <mat-form-field>
+          <mat-label>Room price:</mat-label>
+          <input matInput name="roomPrice" type="text" required formControlName="roomPrice" placeholder="Ex. 49.99">
+          <mat-error *ngIf="this.addRoomForm.get('roomPrice')?.hasError('required')">Room price must be valid</mat-error>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Description:</mat-label>
+          <textarea matInput name="description" required formControlName="description"></textarea>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number adults:</mat-label>
+          <input matInput name="numAdults" type="number" required formControlName="numAdults">
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Number children:</mat-label>
+          <input matInput name="numChildren" type="number" required formControlName="numChildren">
+        </mat-form-field>
+        <br/>
+        <app-room-size-type></app-room-size-type>
+      </div>
+      <div>
+        <br/>
+        <button type="submit" mat-raised-button color="primary" [disabled]="!addRoomForm.valid">+ Add</button>
+      </div>
+      <br/>
+      <p *ngIf="errorMessage" class="error-message">{{ errorMessage }}</p>
+
+      <app-info-email *ngIf="isInfoMessage" [infoMessage]="infoMessage" (closeModal)="closeModal()"></app-info-email>
+      <br/>
+    </form>
+  </mat-card>
+</div>

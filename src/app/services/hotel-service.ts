@@ -78,4 +78,16 @@ export class HotelService{
    getAllRoomsByHotelId(hotelId: number) : Observable<RoomWithId[]> {
      return this.http.get<RoomWithId[]>(`http://localhost:8080/hotels/${hotelId}/rooms`, {headers: this.headers});
    }
+
+   addHotel(email: string, hotel: any) : Observable<any>{
+    return this.http.post(`http://localhost:8080/hotels/${email}/newHotel`, hotel, {headers: this.headers});
+   }
+
+   addImageToHotel(hotelId: number, image: File) : Observable<any> {
+    const formData = new FormData();
+    formData.append('imageUrl', image);
+
+    return this.http.post(`http://localhost:8080/hotels/${hotelId}/newImage`, formData, {headers: this.headers});
+
+   }
 }

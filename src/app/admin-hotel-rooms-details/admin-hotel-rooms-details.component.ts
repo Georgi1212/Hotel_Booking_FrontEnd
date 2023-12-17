@@ -7,6 +7,8 @@ import {RoomWithId} from "../model/roomWithID";
 import {RoomImage} from "../model/roomImage";
 import {Hotel} from "../model/hotel";
 import {forkJoin} from "rxjs";
+import {MatDialog} from "@angular/material/dialog";
+import {AddPhotosRoomComponent} from "../add-photos-room/add-photos-room.component";
 
 @Component({
   selector: 'app-admin-hotel-rooms-details',
@@ -24,7 +26,8 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
               private authService: AuthService,
               private router: Router,
               private hotelService: HotelService,
-              private roomService: RoomService) {}
+              private roomService: RoomService,
+              private dialog: MatDialog) {}
 
   ngOnInit() {
     this.route.params.subscribe((params) => {
@@ -90,6 +93,24 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
 
   logOut() {
     this.authService.logout();
+  }
+
+  toAddRoom(hotelId: number) { //TODO in the page for adding a room in the submit form button, I will also navigare to the admin-hotels-rooms-details.component
+    this.router.navigate([`/${hotelId}/add-room/newRoom`]).then(r=>r);
+  }
+
+  addPhotoToRoom(hotelId: number, roomId: number){
+    this.openAddPhotoDialog(hotelId, roomId);
+  }
+
+  openAddPhotoDialog(hotelId: number, roomId: number){
+    const dialogRef = this.dialog.open(AddPhotosRoomComponent, {
+      data: {
+        roomId: roomId,
+        hotelId: hotelId
+      }
+    });
+
   }
 
   //TODO functionality to add, update and delete rooms, hotels, to see room occupancies and bookings!!!!!!
