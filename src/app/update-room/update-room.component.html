@@ -1,0 +1,29 @@
+<div id="update-form" [formGroup]="roomForm">
+  <mat-form-field>
+    <mat-label>Room price</mat-label>
+    <input matInput id="roomPrice-input" formControlName="roomPrice">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input matInput id="description-input" formControlName="description" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Number children</mat-label>
+    <input matInput id="numChildren-input" formControlName="numChildren" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Number adults</mat-label>
+    <input matInput id="numAdults-input" formControlName="numAdults" >
+  </mat-form-field>
+
+  <app-room-size-type></app-room-size-type>
+
+  <button type="submit" mat-stroked-button color="primary" (click)="updateRoom()" >Update Information</button>
+
+  <app-error-modal *ngIf="error" [errorMessage]="errorMessage" (closeModal)="closeModal()"></app-error-modal>
+
+
+</div>

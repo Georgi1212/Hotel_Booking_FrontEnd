@@ -53,6 +53,8 @@
           <p>Number of children: {{room.numChildren}}</p>
           <br/>
           <button mat-raised-button color="primary" (click)="addPhotoToRoom(hotelId, room.roomId)">+ Add photos</button><!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
+          <button mat-stroked-button (click)="updateRoom(room.roomId)">Update room</button>
+          <button mat-stroked-button color="warn" (click)="deleteRoom(hotelId, room.roomId)">Detele room</button>
         </mat-expansion-panel>
       </mat-accordion>
     </mat-list-item>

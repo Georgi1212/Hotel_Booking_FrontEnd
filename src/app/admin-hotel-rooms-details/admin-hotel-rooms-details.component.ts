@@ -9,6 +9,11 @@ import {Hotel} from "../model/hotel";
 import {forkJoin} from "rxjs";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPhotosRoomComponent} from "../add-photos-room/add-photos-room.component";
+import {UpdateUserComponent} from "../update-user/update-user.component";
+import {User} from "../model/user";
+import {Room} from "../model/room";
+import {UpdateRoomComponent} from "../update-room/update-room.component";
+import {ConfirmDialogDeleteComponent} from "../confirm-dialog-delete/confirm-dialog-delete.component";
 
 @Component({
   selector: 'app-admin-hotel-rooms-details',
@@ -21,6 +26,8 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
   slides: RoomImage[] = [];
   hotelDetails!: Hotel;
   panelOpenState = false;
+
+  room_info!: Room;
 
   constructor(private route: ActivatedRoute,
               private authService: AuthService,
@@ -111,6 +118,64 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
       }
     });
 
+  }
+
+  updateRoom(roomId: number){
+    this.roomService.getRoomByHotelIdRoomId(this.hotelId, roomId).subscribe({
+      next: (value) => {
+        this.room_info = value;
+
+        const dialogRef = this.dialog.open(UpdateRoomComponent, {
+          data: { hotelId: this.hotelId, roomId: roomId, room: this.room_info }
+        });
+
+        dialogRef.componentInstance.room_emit.subscribe((object: Room) =>{
+          this.room_info = object;
+          this.dialog.closeAll();
+        })
+      },
+      error: (error) => {
+        console.log('Error getting user: ', error);
+      }
+    });
+
+    console.log(this.room_info);
+
+    /*const dialogRef = this.dialog.open(UpdateRoomComponent, {
+      data: { hotelId: this.hotelId, roomId: roomId, room: this.room_info }
+    });
+
+    dialogRef.componentInstance.room_emit.subscribe((object: Room) =>{
+      this.room_info = object;
+      this.dialog.closeAll();
+    })*/
+  }
+
+  deleteRoom(hotelId: number, roomId: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogDeleteComponent, {
+      data: {
+        title: 'Confirm Deletion',
+        message: 'Are you sure you want to delete this room?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        // User clicked 'Delete', perform deletion logic here
+        this.performRoomDeletion(hotelId, roomId);
+      }
+    });
+  }
+
+  performRoomDeletion(hotelId:number, roomId: number) {
+    this.roomService.deleteRoom(this.hotelId, roomId).subscribe({
+      next: () => {
+        console.log('Room deleted successfully.');
+      },
+      error: (error) => {
+        console.error('Error deleting the room: ', error);
+      }
+    });
   }
 
   //TODO functionality to add, update and delete rooms, hotels, to see room occupancies and bookings!!!!!!

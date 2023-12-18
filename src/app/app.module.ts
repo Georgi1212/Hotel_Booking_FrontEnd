@@ -29,6 +29,8 @@ import {AddRoomComponent} from "./add-room/add-room.component";
 import {AddPhotosRoomComponent} from "./add-photos-room/add-photos-room.component";
 import {AddHotelComponent} from "./add-hotel/add-hotel.component";
 import {AddPhotoHotelComponent} from "./add-photo-hotel/add-photo-hotel.component";
+import {UpdateRoomComponent} from "./update-room/update-room.component";
+import {ConfirmDialogDeleteComponent} from "./confirm-dialog-delete/confirm-dialog-delete.component";
 
 
 @NgModule({
@@ -54,7 +56,9 @@ import {AddPhotoHotelComponent} from "./add-photo-hotel/add-photo-hotel.componen
     AddRoomComponent,
     AddPhotosRoomComponent,
     AddHotelComponent,
-    AddPhotoHotelComponent
+    AddPhotoHotelComponent,
+    UpdateRoomComponent,
+    ConfirmDialogDeleteComponent
   ],
   imports: [
     BrowserModule,
