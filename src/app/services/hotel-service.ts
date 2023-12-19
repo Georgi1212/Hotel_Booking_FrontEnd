@@ -79,6 +79,10 @@ export class HotelService{
      return this.http.get<RoomWithId[]>(`http://localhost:8080/hotels/${hotelId}/rooms`, {headers: this.headers});
    }
 
+   getHotelByHotelId(hotelId: number) : Observable<Hotel> {
+    return this.http.get<Hotel>(`http://localhost:8080/hotels/hotel/${hotelId}`, {headers: this.headers});
+   }
+
    addHotel(email: string, hotel: any) : Observable<any>{
     return this.http.post(`http://localhost:8080/hotels/${email}/newHotel`, hotel, {headers: this.headers});
    }
@@ -88,6 +92,13 @@ export class HotelService{
     formData.append('imageUrl', image);
 
     return this.http.post(`http://localhost:8080/hotels/${hotelId}/newImage`, formData, {headers: this.headers});
+   }
 
+   updateHotel(hotelId: number, hotel: Hotel) : Observable<any> {
+    return this.http.patch(`http://localhost:8080/hotels/hotel/${hotelId}`, hotel, {headers: this.headers});
+   }
+
+   deleteHotel(hotelId: number) : Observable<any> {
+    return this.http.delete(`http://localhost:8080/hotels/hotel/${hotelId}`, {headers: this.headers});
    }
 }

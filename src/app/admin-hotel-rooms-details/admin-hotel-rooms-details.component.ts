@@ -140,15 +140,6 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
     });
 
     console.log(this.room_info);
-
-    /*const dialogRef = this.dialog.open(UpdateRoomComponent, {
-      data: { hotelId: this.hotelId, roomId: roomId, room: this.room_info }
-    });
-
-    dialogRef.componentInstance.room_emit.subscribe((object: Room) =>{
-      this.room_info = object;
-      this.dialog.closeAll();
-    })*/
   }
 
   deleteRoom(hotelId: number, roomId: number) {
@@ -178,5 +169,5 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
     });
   }
 
-  //TODO functionality to add, update and delete rooms, hotels, to see room occupancies and bookings!!!!!!
+  //TODO to see room occupancies and bookings!!!!!!
 }

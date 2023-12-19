@@ -22,6 +22,10 @@
           <button mat-raised-button color="primary" (click)="updateHotelImage(hotel.hotelId)">Update hotel image</button>
           <br/>
           <button mat-raised-button color="primary" (click)="viewHotelRooms(hotel.hotelId)">View Rooms & Details</button>
+          <br/>
+          <button mat-stroked-button (click)="updateHotel(hotel.hotelId)">Update hotel information</button>
+          <br/>
+          <button mat-stroked-button color="warn" (click)="deleteHotel(hotel.hotelId)">Detele hotel</button>
         </mat-card-actions>
       </mat-card>
     </li>

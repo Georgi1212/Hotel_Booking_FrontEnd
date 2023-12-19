@@ -2,11 +2,10 @@ import {Injectable} from "@angular/core";
 import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {Observable} from "rxjs";
 
-
 @Injectable({
   providedIn: 'root'
 })
-export class OccupancyService{
+export class BookingService {
   private token: string;
   private headers: HttpHeaders;
 
@@ -23,15 +22,15 @@ export class OccupancyService{
     return `${year}-${month}-${day}`;
   }
 
-  getOccupanciesByHotelId(hotelId: number):Observable<any> {
-    return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/occupancies`, {headers: this.headers});
+  getBookingsByEmail(email:string) : Observable<any> {
+    return this.http.get(`http://localhost:8080/hotels/${email}/bookings`, {headers: this.headers});
   }
 
-  getOccupanciesByHotelIdRoomId(hotelId: number, roomId:number) : Observable<any> {
-    return this.http.get(`http://localhost:8080/hotels/${hotelId}/rooms/${roomId}/occupancies`, {headers: this.headers});
+  getBookingsByHotelId(hotelId: number) : Observable<any> {
+    return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/bookings`, {headers: this.headers});
   }
 
-  getOccupanciesByHotelIdTimePeriod(hotelId: number, startDate: Date, endDate: Date) : Observable<any> {
+  getBookingByHotelIdForTimePeriod(hotelId: number, startDate: Date, endDate: Date) : Observable<any> {
     const formattedStartDate = this.formatDate(startDate);
     const formattedEndDate = this.formatDate(endDate);
 
@@ -39,10 +38,10 @@ export class OccupancyService{
       .set('startDate', formattedStartDate || '')
       .set('endDate', formattedEndDate || '');
 
-    return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/occupancies/timePeriod`, {params: params, headers: this.headers});
+    return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/bookings/timePeriod`, {params: params, headers: this.headers});
   }
 
-  getOccupanciesByHotelIdRoomIdTimePeriod(hotelId: number, roomId:number, startDate: Date, endDate: Date) {
+  getBookingsByHotelIdRoomIdForTimePeriod(hotelId: number, roomId: number, startDate: Date, endDate: Date) : Observable<any>{
     const formattedStartDate = this.formatDate(startDate);
     const formattedEndDate = this.formatDate(endDate);
 
@@ -50,8 +49,10 @@ export class OccupancyService{
       .set('startDate', formattedStartDate || '')
       .set('endDate', formattedEndDate || '');
 
-    return this.http.get(`http://localhost:8080/hotels/${hotelId}/rooms/${roomId}/occupancies/timePeriod`, {params: params, headers: this.headers});
+    return this.http.get(`http://localhost:8080/hotels/${hotelId}/rooms/${roomId}/bookings/timePeriod`, {params: params, headers: this.headers});
   }
 
-
+  addBooking(email:string, toCreateBooking: any) : Observable<any> {
+    return this.http.post(`http://localhost:8080/hotels/${email}/newBooking`, toCreateBooking, {headers: this.headers});
+  }
 }

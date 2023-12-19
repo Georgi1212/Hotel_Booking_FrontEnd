@@ -31,6 +31,8 @@ import {AddHotelComponent} from "./add-hotel/add-hotel.component";
 import {AddPhotoHotelComponent} from "./add-photo-hotel/add-photo-hotel.component";
 import {UpdateRoomComponent} from "./update-room/update-room.component";
 import {ConfirmDialogDeleteComponent} from "./confirm-dialog-delete/confirm-dialog-delete.component";
+import {UpdateHotelComponent} from "./update-hotel/update-hotel.component";
+import {ViewBookingsAdminComponent} from "./view-bookings-admin/view-bookings-admin.component";
 
 
 @NgModule({
@@ -58,7 +60,9 @@ import {ConfirmDialogDeleteComponent} from "./confirm-dialog-delete/confirm-dial
     AddHotelComponent,
     AddPhotoHotelComponent,
     UpdateRoomComponent,
-    ConfirmDialogDeleteComponent
+    ConfirmDialogDeleteComponent,
+    UpdateHotelComponent,
+    ViewBookingsAdminComponent
   ],
   imports: [
     BrowserModule,

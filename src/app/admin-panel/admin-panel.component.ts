@@ -7,6 +7,11 @@ import {RoomService} from "../services/room-service";
 import {AddPhotosRoomComponent} from "../add-photos-room/add-photos-room.component";
 import {MatDialog} from "@angular/material/dialog";
 import {AddPhotoHotelComponent} from "../add-photo-hotel/add-photo-hotel.component";
+import {Hotel} from "../model/hotel";
+import {UpdateRoomComponent} from "../update-room/update-room.component";
+import {Room} from "../model/room";
+import {ConfirmDialogDeleteComponent} from "../confirm-dialog-delete/confirm-dialog-delete.component";
+import {UpdateHotelComponent} from "../update-hotel/update-hotel.component";
 
 @Component({
   selector: 'app-admin-panel',
@@ -16,6 +21,8 @@ import {AddPhotoHotelComponent} from "../add-photo-hotel/add-photo-hotel.compone
 export class AdminPanelComponent implements OnInit {
   hostEmail!: string;
   hotels: any[] = [];
+
+  hotel_info!: Hotel;
 
   constructor(private route: ActivatedRoute,
               private authService: AuthService,
@@ -71,6 +78,55 @@ export class AdminPanelComponent implements OnInit {
     const dialogRef = this.dialog.open(AddPhotoHotelComponent, {
       data: {
         hotelId: hotelId
+      }
+    });
+  }
+
+  updateHotel(hotelId: number){
+    this.hotelService.getHotelByHotelId(hotelId).subscribe({
+      next:(value) => {
+        this.hotel_info = value;
+
+        const dialogRef = this.dialog.open(UpdateHotelComponent, {
+          data: { hotelId: hotelId, hotel: this.hotel_info }
+        });
+
+        dialogRef.componentInstance.hotel_emit.subscribe((object: Hotel) =>{
+          this.hotel_info = object;
+          this.dialog.closeAll();
+        })
+      },
+      error: (error) => {
+        console.log('Error getting user: ', error);
+      }
+    });
+
+    console.log(this.hotel_info);
+  }
+
+  deleteHotel(hotelId: number) {
+    const dialogRef = this.dialog.open(ConfirmDialogDeleteComponent, {
+      data: {
+        title: 'Confirm Deletion',
+        message: 'Are you sure you want to delete this hotel?'
+      }
+    });
+
+    dialogRef.afterClosed().subscribe((result: boolean) => {
+      if (result) {
+        // User clicked 'Delete', perform deletion logic here
+        this.performHotelDeletion(hotelId);
+      }
+    });
+  }
+
+  performHotelDeletion(hotelId:number) {
+    this.hotelService.deleteHotel(hotelId).subscribe({
+      next: () => {
+        console.log('Hotel deleted successfully.');
+      },
+      error: (error) => {
+        console.error('Error deleting the hotel: ', error);
       }
     });
   }

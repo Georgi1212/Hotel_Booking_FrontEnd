@@ -75,6 +75,10 @@ export class UpdateRoomComponent implements OnInit{
         console.log(value);
         this.room_emit.emit(value);
         this.roomForm.reset();
+
+        setTimeout(() => {
+          location.reload();
+        }, 100);
       },
       error: (error) => {
         console.log(error);

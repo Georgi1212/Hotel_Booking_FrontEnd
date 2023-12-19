@@ -1,0 +1,33 @@
+<div id="update-form" [formGroup]="hotelForm">
+  <mat-form-field>
+    <mat-label>Hotel name</mat-label>
+    <input matInput id="hotelName-input" formControlName="hotelName">
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Street</mat-label>
+    <input matInput id="street-input" formControlName="street" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>City</mat-label>
+    <input matInput id="city-input" formControlName="city" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Country</mat-label>
+    <input matInput id="country-input" formControlName="country" >
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Hotel description</mat-label>
+    <textarea matInput id="hotelDescription-input" formControlName="hotelDescription"></textarea>
+  </mat-form-field>
+
+
+  <button type="submit" mat-stroked-button color="primary" (click)="updateHotel()" >Update Information</button>
+
+  <app-error-modal *ngIf="error" [errorMessage]="errorMessage" (closeModal)="closeModal()"></app-error-modal>
+
+
+</div>
