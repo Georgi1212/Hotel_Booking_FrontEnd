@@ -54,4 +54,11 @@
     </mat-card-content>
     <button type="button" mat-stroked-button color="primary" (click)="updateUser()">Update Profile</button>
   </mat-card>
+
+  <br/>
+  <br/>
+  <div *ngIf="isUserTypeUser" class="filter-userType-container">
+    <h3>Your bookings:</h3>
+    <app-view-bookings-user></app-view-bookings-user>
+  </div>
 </div>

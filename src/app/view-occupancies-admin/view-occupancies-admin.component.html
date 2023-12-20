@@ -1,0 +1,46 @@
+<div class="filter-container">
+  <mat-form-field>
+    <mat-label>Enter a date range (check-in & check_out dates)</mat-label>
+    <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
+      <input matStartDate formControlName="start" placeholder="Start date">
+      <input matEndDate formControlName="end" placeholder="End date">
+    </mat-date-range-input>
+    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-date-range-picker #picker></mat-date-range-picker>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Room ID</mat-label>
+    <input matInput name="selectedRoomId" type="text" [(ngModel)]="selectedRoomId" (ngModelChange)="onRoomIdInputChange($event)" placeholder="Enter room id you want">
+  </mat-form-field>
+
+  <button mat-raised-button color="primary" (click)="onSubmitFilter()">Submit</button>
+</div>
+
+<!-- Table -->
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <!-- Room ID Column -->
+  <ng-container matColumnDef="roomId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Room ID</mat-header-cell>
+    <mat-cell *matCellDef="let occupancy">{{ occupancy.roomId }}</mat-cell>
+  </ng-container>
+
+  <!-- Check In Column -->
+  <ng-container matColumnDef="check_in">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Check In</mat-header-cell>
+    <mat-cell *matCellDef="let occupancy">{{ occupancy.check_in }}</mat-cell>
+  </ng-container>
+
+  <!-- Check Out Column -->
+  <ng-container matColumnDef="check_out">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Check Out</mat-header-cell>
+    <mat-cell *matCellDef="let occupancy">{{ occupancy.check_out }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>

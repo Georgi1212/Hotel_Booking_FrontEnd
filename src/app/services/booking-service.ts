@@ -30,7 +30,7 @@ export class BookingService {
     return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/bookings`, {headers: this.headers});
   }
 
-  getBookingByHotelIdForTimePeriod(hotelId: number, startDate: Date, endDate: Date) : Observable<any> {
+  getBookingsByHotelIdForTimePeriod(hotelId: number, startDate: Date, endDate: Date) : Observable<any> {
     const formattedStartDate = this.formatDate(startDate);
     const formattedEndDate = this.formatDate(endDate);
 
@@ -39,6 +39,10 @@ export class BookingService {
       .set('endDate', formattedEndDate || '');
 
     return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/bookings/timePeriod`, {params: params, headers: this.headers});
+  }
+
+  getBookingsByHotelIdRoomId(hotelId: number, roomId: number) : Observable<any>{
+    return this.http.get(`http://localhost:8080/hotels/${hotelId}/rooms/${roomId}/bookings`, {headers: this.headers});
   }
 
   getBookingsByHotelIdRoomIdForTimePeriod(hotelId: number, roomId: number, startDate: Date, endDate: Date) : Observable<any>{

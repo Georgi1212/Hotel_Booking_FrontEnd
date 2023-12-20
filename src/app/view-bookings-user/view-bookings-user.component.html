@@ -1,0 +1,73 @@
+<mat-table [dataSource]="dataSource" matSort class="mat-elevation-z8">
+
+  <ng-container matColumnDef="bookingId">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Booking ID</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.bookingId }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hostFirstName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Host First Name</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hostFirstName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hostLastName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Host Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hostLastName }}</mat-cell>
+  </ng-container>
+
+  <!-- User Phone Number Column -->
+  <ng-container matColumnDef="hostPhoneNumber">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Host Phone Number</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hostPhoneNumber }}</mat-cell>
+  </ng-container>
+
+  <!-- Room Price Column -->
+  <ng-container matColumnDef="hotelName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel Name</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hotelName }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hotelStreet">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel Street</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hotelStreet }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hotelCity">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel City</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hotelCity }}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="hotelCountry">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Hotel Country</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.hotelCountry }}</mat-cell>
+  </ng-container>
+
+  <!-- Check In Column -->
+  <ng-container matColumnDef="check_in">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Check In</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.check_in }}</mat-cell>
+  </ng-container>
+
+  <!-- Check Out Column -->
+  <ng-container matColumnDef="check_out">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Check Out</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.check_out }}</mat-cell>
+  </ng-container>
+
+  <!-- Sum Price Column -->
+  <ng-container matColumnDef="sumPrice">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Sum Price</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.sumPrice }}</mat-cell>
+  </ng-container>
+
+  <!-- Created At Column -->
+  <ng-container matColumnDef="createdAt">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Created At</mat-header-cell>
+    <mat-cell *matCellDef="let booking">{{ booking.createdAt }}</mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+</mat-table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>

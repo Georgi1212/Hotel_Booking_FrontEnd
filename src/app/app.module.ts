@@ -6,7 +6,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AngularMaterialModule} from './angular-material/angular-material.module'
 import {AppRoutingModuleModule} from "./app-routing-module/app-routing-module.module";
 import {LoginComponent} from "./login/login.component";
-import {ReactiveFormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { HttpClientModule } from '@angular/common/http';
 import {SignupComponent} from "./signup/signup.component";
 import {InfoEmailComponent} from "./info-email/info-email.component";
@@ -33,6 +33,11 @@ import {UpdateRoomComponent} from "./update-room/update-room.component";
 import {ConfirmDialogDeleteComponent} from "./confirm-dialog-delete/confirm-dialog-delete.component";
 import {UpdateHotelComponent} from "./update-hotel/update-hotel.component";
 import {ViewBookingsAdminComponent} from "./view-bookings-admin/view-bookings-admin.component";
+import {ViewOccupanciesAdminComponent} from "./view-occupancies-admin/view-occupancies-admin.component";
+import {
+  TabViewBookingsOccupanciesComponent
+} from "./tab-view-bookings-occupancies/tab-view-bookings-occupancies.component";
+import {ViewBookingsUserComponent} from "./view-bookings-user/view-bookings-user.component";
 
 
 @NgModule({
@@ -62,18 +67,22 @@ import {ViewBookingsAdminComponent} from "./view-bookings-admin/view-bookings-ad
     UpdateRoomComponent,
     ConfirmDialogDeleteComponent,
     UpdateHotelComponent,
-    ViewBookingsAdminComponent
+    ViewBookingsAdminComponent,
+    ViewOccupanciesAdminComponent,
+    TabViewBookingsOccupanciesComponent,
+    ViewBookingsUserComponent
   ],
-  imports: [
-    BrowserModule,
-    HttpClientModule,
-    CommonModule,
-    BrowserAnimationsModule,
-    AngularMaterialModule,
-    AppRoutingModuleModule,
-    ReactiveFormsModule,
-    NgOptimizedImage,
-  ],
+    imports: [
+        BrowserModule,
+        HttpClientModule,
+        CommonModule,
+        BrowserAnimationsModule,
+        AngularMaterialModule,
+        AppRoutingModuleModule,
+        ReactiveFormsModule,
+        NgOptimizedImage,
+        FormsModule,
+    ],
   exports: [CommonModule],
   providers: [],
   bootstrap: [AppComponent]

@@ -42,7 +42,7 @@ export class OccupancyService{
     return this.http.get(`http://localhost:8080/hotels/hotel/${hotelId}/occupancies/timePeriod`, {params: params, headers: this.headers});
   }
 
-  getOccupanciesByHotelIdRoomIdTimePeriod(hotelId: number, roomId:number, startDate: Date, endDate: Date) {
+  getOccupanciesByHotelIdRoomIdTimePeriod(hotelId: number, roomId:number, startDate: Date, endDate: Date): Observable<any> {
     const formattedStartDate = this.formatDate(startDate);
     const formattedEndDate = this.formatDate(endDate);
 

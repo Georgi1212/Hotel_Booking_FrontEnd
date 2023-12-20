@@ -14,6 +14,8 @@ import {Router} from "@angular/router";
 export class UserProfileComponent implements OnInit{
   user_email!:string;
   user_info!:User;
+
+  isUserTypeUser!: boolean;
   constructor(private userService: UserService,
               private dialog: MatDialog,
               private authService: AuthService,
@@ -22,6 +24,15 @@ export class UserProfileComponent implements OnInit{
 
   ngOnInit() {
     this.user_email = localStorage.getItem('email') || '';
+
+    this.userService.getUserType(this.user_email).subscribe({
+      next: (value) => {
+        this.isUserTypeUser = value === "USER";
+      },
+      error: (error) => {
+        console.log('Error getting user: ', error);
+      }
+    })
 
     this.userService.getUserByEmail(this.user_email).subscribe({
       next: (value) => {
