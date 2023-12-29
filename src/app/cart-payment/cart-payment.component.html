@@ -1,0 +1,71 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<h3> Your booking information:</h3>
+<mat-card>
+  <mat-card-content><strong>Guest email:</strong> {{this.email}}</mat-card-content>
+  <mat-card-content><strong>Hotel name:</strong> {{this.hotelName}}</mat-card-content>
+  <mat-card-content><strong>Hotel country:</strong> {{this.hotelCountry}}</mat-card-content>
+  <mat-card-content><strong>Hotel city:</strong> {{this.hotelCity}}</mat-card-content>
+  <mat-card-content><strong>Check-in:</strong> {{this.startDate}}</mat-card-content>
+  <mat-card-content><strong>Check-out:</strong> {{this.endDate}}</mat-card-content>
+  <mat-card-content><strong>Sum price:</strong> {{this.sumPrice}} $</mat-card-content>
+</mat-card>
+<br/>
+<!--<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form [formGroup]="paymentForm" (ngSubmit)="checkOut()">
+        <div class="col-50">-->
+          <!--<h3>Payment</h3>
+          <label>Accepted Cards</label>
+          <div class="icon-container">
+            <i class="fa fa-cc-visa" style="color:navy;"></i>
+            <i class="fa fa-cc-amex" style="color:blue;"></i>
+            <i class="fa fa-cc-mastercard" style="color:red;"></i>
+            <i class="fa fa-cc-discover" style="color:orange;"></i>
+          </div>-->
+          <!--<mat-form-field>
+            <mat-label>Total</mat-label>
+            <input matInput type="number" name="price" formControlName="price">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Currency</mat-label>
+            <input matInput type="text" name="currency" formControlName="currency">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Payment Method</mat-label>
+            <input matInput type="text" name="method" formControlName="method">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Intent</mat-label>
+            <input matInput type="text" name="intent" formControlName="intent">
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Payment Description</mat-label>
+            <input matInput type="text" name="description" formControlName="description">
+          </mat-form-field>-->
+          <!--<label for="price">Total</label>
+          <input type="text" id="price" name="price" placeholder="{{this.sumPrice}}">
+          <label for="currency">Currency</label>
+          <input type="text" id="currency" name="currency" placeholder="USD">
+          <label for="method">Payment Method</label>
+          <input type="text" id="method" name="method" placeholder="paypal">
+          <label for="intent">Intent</label>
+          <input type="text" id="intent" name="intent" value="sale">
+          <label for="description">Payment Description</label>
+          <input type="text" id="description" name="description" placeholder="Payment Description">-->
+        <!--<button type="submit" class="btn">Continue to checkout</button>-->
+          <button class="paypal-button" (click)="checkout(this.sumPrice.toString())">
+            <span class="paypal-button-title">Book now with </span>
+            <span class="paypal-logo">
+              <i id="ipay">Pay</i>
+              <i id="ipal">Pal</i>
+            </span>
+          </button>
+        <!--</div>
+      </form>
+    </div>
+  </div>
+</div>-->

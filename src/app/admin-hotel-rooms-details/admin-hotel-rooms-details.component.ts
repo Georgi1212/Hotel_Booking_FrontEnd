@@ -168,6 +168,4 @@ export class AdminHotelRoomsDetailsComponent implements OnInit{
       }
     });
   }
-
-  //TODO to see room occupancies and bookings!!!!!!
 }

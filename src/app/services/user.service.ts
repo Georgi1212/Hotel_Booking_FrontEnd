@@ -16,7 +16,7 @@ export class UserService {
   }
 
   getUserType(email:string) : Observable<string> {
-    return this.http.get(`http://localhost:8080/users/${email}/userType`,
+    return this.http.get('http://localhost:8080/users/userType?email='+email,
       {headers: this.headers, responseType: 'text'});
   }
 

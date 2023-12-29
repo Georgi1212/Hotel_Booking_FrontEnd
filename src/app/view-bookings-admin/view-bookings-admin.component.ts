@@ -15,7 +15,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 export class ViewBookingsAdminComponent implements OnInit{
   hotelId!: number;
   dataSource = new MatTableDataSource<BookingRow>();
-  displayedColumns: string[] = ['bookingId', 'userEmail', 'userFirstName', 'userLastName', 'userPhoneNumber', 'roomId', 'roomPrice', 'check_in', 'check_out', 'sumPrice', 'createdAt'];
+  displayedColumns: string[] = ['bookingId', 'userEmail', 'userFirstName', 'userLastName', 'userPhoneNumber', 'roomId', 'check_in', 'check_out', 'sumPrice', 'createdAt']; // removed 'roomPrice'
 
   range = new FormGroup({
     start: new FormControl<Date | null>(null),

@@ -38,6 +38,8 @@ import {
   TabViewBookingsOccupanciesComponent
 } from "./tab-view-bookings-occupancies/tab-view-bookings-occupancies.component";
 import {ViewBookingsUserComponent} from "./view-bookings-user/view-bookings-user.component";
+import {CartPaymentComponent} from "./cart-payment/cart-payment.component";
+import {SuccessfulPaymentComponent} from "./successful-payment/successful-payment.component";
 
 
 @NgModule({
@@ -70,7 +72,9 @@ import {ViewBookingsUserComponent} from "./view-bookings-user/view-bookings-user
     ViewBookingsAdminComponent,
     ViewOccupanciesAdminComponent,
     TabViewBookingsOccupanciesComponent,
-    ViewBookingsUserComponent
+    ViewBookingsUserComponent,
+    CartPaymentComponent,
+    SuccessfulPaymentComponent
   ],
     imports: [
         BrowserModule,

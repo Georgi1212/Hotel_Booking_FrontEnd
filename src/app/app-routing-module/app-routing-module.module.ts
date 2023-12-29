@@ -14,6 +14,8 @@ import {AdminPanelComponent} from "../admin-panel/admin-panel.component";
 import {AdminHotelRoomsDetailsComponent} from "../admin-hotel-rooms-details/admin-hotel-rooms-details.component";
 import {AddRoomComponent} from "../add-room/add-room.component";
 import {AddHotelComponent} from "../add-hotel/add-hotel.component";
+import {CartPaymentComponent} from "../cart-payment/cart-payment.component";
+import {SuccessfulPaymentComponent} from "../successful-payment/successful-payment.component";
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent},
@@ -26,6 +28,8 @@ const routes: Routes = [
   { path: 'admin-panel/hotel-rooms-details/:hotelId', component: AdminHotelRoomsDetailsComponent, canActivate:[AuthGuardService]},
   { path: ':hotelId/add-room/newRoom', component: AddRoomComponent, canActivate:[AuthGuardService]},
   { path: 'newHotel', component: AddHotelComponent, canActivate:[AuthGuardService]},
+  { path: 'cart-payment/:hotelId/:roomId', component: CartPaymentComponent, canActivate:[AuthGuardService]},
+  { path: 'pay/success', component: SuccessfulPaymentComponent, canActivate:[AuthGuardService]},
   { path: 'users/verifyEmail/:verifyCode', component: VerifyEmailComponent},
   { path: 'sendPasswordResetEmail', component: ResetPasswordEmailComponent},
   { path: 'resetPassword/:verifyCode', component: ResetPasswordComponent},

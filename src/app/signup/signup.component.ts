@@ -8,8 +8,6 @@ import {UserTypeService} from "../services/userType.service";
 
 @Component({
   selector: 'app-signup',
-  //standalone: true,
-  //imports: [CommonModule, AngularMaterialModule, ReactiveFormsModule, RouterLink],
   templateUrl: './signup.component.html',
   styleUrl: './signup.component.css'
 })

@@ -66,8 +66,15 @@
     <mat-cell *matCellDef="let booking">{{ booking.createdAt }}</mat-cell>
   </ng-container>
 
+  <ng-container matColumnDef="cancelBooking">
+    <mat-header-cell *matHeaderCellDef>Cancel Booking</mat-header-cell>
+    <mat-cell *matCellDef="let booking">
+      <button mat-button color="warn" (click)="cancelBooking(booking.bookingId)">Cancel</button>
+    </mat-cell>
+  </ng-container>
+
   <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
   <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
 </mat-table>
 
-<mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+<mat-paginator [pageSizeOptions]="[8, 10, 25, 100]" showFirstLastButtons></mat-paginator>

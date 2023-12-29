@@ -59,4 +59,18 @@ export class BookingService {
   addBooking(email:string, toCreateBooking: any) : Observable<any> {
     return this.http.post(`http://localhost:8080/hotels/${email}/newBooking`, toCreateBooking, {headers: this.headers});
   }
+
+  makePayment(sum: string, hotelId:number, roomId:number, check_in:string, check_out:string) : Observable<string> {
+    return this.http.post(`http://localhost:8080/pay?sum=`+sum+'&hotelId='+hotelId.toString()+'&roomId='+roomId.toString()+'&check_in='+check_in+'&check_out='+check_out, {},
+      {headers: this.headers, responseType: 'text'});
+  }
+
+  completePayment(paymentId: string, PayerID: string) : Observable<any> {
+    return this.http.get('http://localhost:8080/pay/success?paymentId='+paymentId+'&PayerID='+PayerID,
+      {headers: this.headers, responseType: 'text'});
+  }
+
+  deleteBooking(bookingId: number) : Observable<any>{
+    return this.http.delete(`http://localhost:8080/hotels/booking/${bookingId}`, {headers: this.headers});
+  }
 }

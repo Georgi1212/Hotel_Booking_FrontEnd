@@ -1,8 +1,43 @@
 .card {
   max-width: 400px;
+  background-color: #d6ecff;
+  margin: 10px;
 }
+
 
 ul {
   list-style-type: none;
   padding: 0;
 }
+
+.nav-buttons{
+  display: flex;
+  justify-content: space-between;
+}
+
+h2{
+  margin: 10px;
+}
+
+#other-buttons{
+  display: flex;
+  margin: 10px;
+}
+
+button {
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.hotel-item{
+  list-style: none;
+  float: left;
+  display: flex;
+  align-content: flex-start;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: stretch;
+}
+
+
+

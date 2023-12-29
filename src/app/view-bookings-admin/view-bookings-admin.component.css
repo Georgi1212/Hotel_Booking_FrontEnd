@@ -1,0 +1,11 @@
+.wider-form-field{
+  width: 450px;
+}
+
+mat-form-field{
+  margin: 10px;
+}
+
+.mat-elevation-z8 {
+  overflow-x: auto;
+}

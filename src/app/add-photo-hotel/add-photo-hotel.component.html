@@ -1,12 +1,14 @@
-<h2>Add Photos to Room</h2>
-<input type="file" (change)="onFilesSelected($event)" multiple>
-<br/>
-<div>
-  <img [src]="preview" class="preview">
+<div id="upload-info">
+  <h2>Add Photos to Room</h2>
+  <input type="file" (change)="onFilesSelected($event)" multiple>
+  <br/>
+  <div>
+    <img [src]="preview" class="preview">
+  </div>
+  <br/>
+  <br/>
+  <button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
+  <button mat-button (click)="onCancel()">Close</button>
+  <br/>
+  <p *ngIf="isInfoMessage">{{infoMessage}}</p>
 </div>
-<br/>
-<br/>
-<button mat-raised-button color="primary" (click)="onUpload()">Upload</button>
-<button mat-button (click)="onCancel()">Close</button>
-<br/>
-<p *ngIf="isInfoMessage">{{infoMessage}}</p>

@@ -1,0 +1,35 @@
+.profile-button,
+.logout-button {
+  float: right;
+  margin: 10px; /* Adjust the margin as needed */
+}
+
+h2{
+  margin-left: 10px;
+}
+
+mat-card, mat-expansion-panel{
+  background-color: #d6ecff;
+}
+
+img{
+  width: 100%; /* Make the image take up the full width of the card */
+  max-height: 500px; /* Set a maximum height for the image */
+  object-fit: cover;
+}
+
+#hotel-info-img{
+  display: flex;
+  justify-content: space-around;
+}
+
+#room-info{
+  margin-bottom: 15px;
+}
+
+mat-expansion-panel{
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+

@@ -1,5 +1,6 @@
+<br/>
 <div class="filter-container">
-  <mat-form-field>
+  <mat-form-field class="wider-form-field">
     <mat-label>Enter a date range (check-in & check_out dates)</mat-label>
     <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
       <input matStartDate formControlName="start" placeholder="Start date">
@@ -50,10 +51,10 @@
   </ng-container>
 
   <!-- Room Price Column -->
-  <ng-container matColumnDef="roomPrice">
+  <!--<ng-container matColumnDef="roomPrice">
     <mat-header-cell *matHeaderCellDef mat-sort-header>Room Price</mat-header-cell>
     <mat-cell *matCellDef="let booking">{{ booking.roomPrice }}</mat-cell>
-  </ng-container>
+  </ng-container>-->
 
   <!-- Room ID Column -->
   <ng-container matColumnDef="roomId">
@@ -90,3 +91,4 @@
 </mat-table>
 
 <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]" showFirstLastButtons></mat-paginator>
+<br/>

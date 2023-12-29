@@ -93,7 +93,27 @@ export class HotelDetailsComponent implements OnInit{
     this.router.navigate(['profile']).then(r => r);
   }
 
+  toCart(hotelId: number, hotelName: string, city: string, country: string,
+         roomId: number, startDate: Date, endDate: Date, roomPrice: number){
+
+    const user_email = localStorage.getItem('email') || '';
+
+    this.router.navigate([`cart-payment/${hotelId}/${roomId}`], {
+      queryParams: {
+        hotelName: hotelName,
+        hotelCity: city,
+        hotelCountry: country,
+        startDate: startDate,
+        endDate: endDate,
+        email: user_email,
+        roomPrice: roomPrice
+      }}).then(r => r);
+
+}
+
   logOut() {
     this.authService.logout();
   }
+
+  protected readonly parseInt = parseInt;
 }

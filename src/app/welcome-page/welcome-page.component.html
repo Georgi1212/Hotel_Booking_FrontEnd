@@ -2,9 +2,11 @@
   <img src="https://images.vexels.com/content/161984/preview/world-landmarks-illustration-design-e3f5a3.png"
        height="840" width="1510" alt="World Landmarks">
 </div>
-<div>
-  <button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
-  <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+<div id="content">
+  <div id="button-container">
+    <button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
+    <button mat-raised-button color="warn" (click)="logOut()">Log out</button>
+  </div>
   <h2>Welcome to <strong>VoyageBooking</strong>!</h2>
   <br/>
   <br/>
@@ -27,7 +29,7 @@
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field>
+    <mat-form-field class="wider-form-field">
       <mat-label>Enter a date range (check-in & check_out dates)</mat-label>
       <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
         <input matStartDate formControlName="start" placeholder="Start date">

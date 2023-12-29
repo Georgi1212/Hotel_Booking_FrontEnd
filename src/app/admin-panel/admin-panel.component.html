@@ -1,36 +1,42 @@
 <div *ngIf="hotels.length > 0">
-  <button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
-  <button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+  <div id="nav-button">
+    <button mat-raised-button color="warn" (click)="logOut()">Log out</button>
+    <button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
+    <button mat-raised-button color="primary" (click)="addHotel()">+ Add hotel</button>
+  </div>
   <br/>
   <h2>Your hotels</h2>
-  <ul>
-    <li *ngFor="let hotel of hotels">
-      <mat-card class="card">
-        <mat-card-header>
-          <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
-          <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
-        </mat-card-header>
-        <img mat-card-lg-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
-        <mat-card-content>
-          {{hotel.description}}
-          <br/>
-          <br/>
-          Rate: <strong>{{hotel.rate}}</strong>
-          <br/>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" (click)="updateHotelImage(hotel.hotelId)">Update hotel image</button>
-          <br/>
-          <button mat-raised-button color="primary" (click)="viewHotelRooms(hotel.hotelId)">View Rooms & Details</button>
-          <br/>
-          <button mat-stroked-button (click)="updateHotel(hotel.hotelId)">Update hotel information</button>
-          <br/>
-          <button mat-stroked-button color="warn" (click)="deleteHotel(hotel.hotelId)">Detele hotel</button>
-        </mat-card-actions>
-      </mat-card>
-    </li>
-  </ul>
-  <button mat-raised-button color="primary" (click)="addHotel()">+ Add hotel</button>
+  <div class="hotel-item">
+    <ul class="hotel-list">
+      <li *ngFor="let hotel of hotels">
+        <mat-card class="card">
+          <mat-card-header>
+            <mat-card-title>{{ hotel.hotelName }}</mat-card-title>
+            <mat-card-subtitle>{{ hotel.city }}, {{ hotel.country }} - {{ hotel.street }}</mat-card-subtitle>
+          </mat-card-header>
+          <img mat-card-xl-image [src]="hotel.hotelImageUrl" alt="Hotel Image">
+          <mat-card-content>
+            {{hotel.description}}
+            <br/>
+            <br/>
+            Rate: <strong>{{hotel.rate}}</strong>
+            <br/>
+          </mat-card-content>
+          <mat-card-actions>
+            <div id="action-button">
+              <button mat-raised-button color="primary" (click)="updateHotelImage(hotel.hotelId)">Update hotel image</button>
+              <br/>
+              <button mat-raised-button color="primary" (click)="viewHotelRooms(hotel.hotelId)">View Rooms Details</button>
+              <br/>
+              <button mat-stroked-button (click)="updateHotel(hotel.hotelId)">Update hotel info</button>
+              <br/>
+              <button mat-stroked-button color="warn" (click)="deleteHotel(hotel.hotelId)">Detele hotel</button>
+            </div>
+          </mat-card-actions>
+        </mat-card>
+      </li>
+    </ul>
+  </div>
 </div>
 <div *ngIf="hotels.length === 0">
   <p>No available hotels found.</p>

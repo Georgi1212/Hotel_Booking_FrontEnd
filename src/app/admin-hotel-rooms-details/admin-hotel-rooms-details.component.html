@@ -1,63 +1,68 @@
-<button mat-raised-button color="primary" (click)="toProfile()">View your profile</button>
-<button mat-raised-button color="primary" (click)="logOut()">Log out</button>
+<button mat-raised-button color="warn" (click)="logOut()" class="logout-button">Log out</button>
+<button mat-raised-button color="primary" (click)="toProfile()" class="profile-button">View your profile</button>
+<button mat-raised-button color="primary" (click)="toAddRoom(hotelId)" class="add-room">+ Add room</button>
+<br/>
+<br/>
+<br/>
 <div *ngIf="hotelDetails">
   <h2>{{ hotelDetails.hotelName }} - {{ hotelDetails.city }}, {{ hotelDetails.country }}</h2>
+    <div id="hotel-info-img">
+      <div id="hotel-info">
+      <mat-card>
+        <mat-card-header>
+          <mat-card-title>{{ hotelDetails.hotelName }}</mat-card-title>
+          <mat-card-subtitle>{{ hotelDetails.city }}, {{ hotelDetails.country }}</mat-card-subtitle>
+        </mat-card-header>
 
-  <mat-card>
-    <mat-card-header>
-      <mat-card-title>{{ hotelDetails.hotelName }}</mat-card-title>
-      <mat-card-subtitle>{{ hotelDetails.city }}, {{ hotelDetails.country }}</mat-card-subtitle>
-    </mat-card-header>
+        <img mat-card-lg-image [src]="hotelDetails.hotelImageUrl" alt="Hotel Image">
 
-    <img mat-card-lg-image [src]="hotelDetails.hotelImageUrl" alt="Hotel Image">
-
-    <mat-card-content>
-      <p>{{ hotelDetails.hotelDescription || 'No hotel description available' }}</p>
-      <p>Address: {{ hotelDetails.street }}</p>
-    </mat-card-content>
-  </mat-card>
-
-  <button mat-raised-button color="primary" (click)="toAddRoom(hotelId)">+ Add room</button>
-
-  <h3>All rooms for hotel "{{hotelDetails.hotelName}}":</h3>
-
-  <div *ngIf="rooms && rooms.length > 0">
-    <mat-list-item *ngFor="let room of rooms">
-      <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                             (closed)="panelOpenState = false">
-          <mat-expansion-panel-header>
-            <mat-panel-title>
-              {{ room.roomSizeTypeDto.roomType }} for {{ room.roomSizeTypeDto.roomCapacity }}
-            </mat-panel-title>
-            <mat-panel-description>
-              Price for a night: ${{ room.roomPrice.toFixed(2) }}
-            </mat-panel-description>
-          </mat-expansion-panel-header>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <!--image slider component will be here-->
-          <div style="width: 500px; height: 200px; margin: 0 auto">
-            <app-image-slider [slides]="getSlidesForRoom(room.roomId)"></app-image-slider> <!--getSlidesForRoom(availability.roomId)-->
-          </div>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <br/>
-          <p>Description: {{ room.description || 'No room description available' }}</p>
-          <p>Number of adults: {{ room.numAdults }}</p>
-          <p>Number of children: {{room.numChildren}}</p>
-          <br/>
-          <button mat-raised-button color="primary" (click)="addPhotoToRoom(hotelId, room.roomId)">+ Add photos</button><!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
-          <button mat-stroked-button (click)="updateRoom(room.roomId)">Update room</button>
-          <button mat-stroked-button color="warn" (click)="deleteRoom(hotelId, room.roomId)">Detele room</button>
-        </mat-expansion-panel>
-      </mat-accordion>
-    </mat-list-item>
+        <mat-card-content>
+          <p>{{ hotelDetails.hotelDescription || 'No hotel description available' }}</p>
+          <p>Address: {{ hotelDetails.street }}</p>
+        </mat-card-content>
+      </mat-card>
+      </div>
+      <div id="room-info">
+        <h3>All rooms for hotel "{{hotelDetails.hotelName}}":</h3>
+        <div *ngIf="rooms && rooms.length > 0">
+          <mat-list-item *ngFor="let room of rooms">
+            <mat-accordion>
+              <mat-expansion-panel (opened)="panelOpenState = true"
+                                   (closed)="panelOpenState = false">
+                <mat-expansion-panel-header>
+                  <mat-panel-title>
+                    {{ room.roomSizeTypeDto.roomType }} for {{ room.roomSizeTypeDto.roomCapacity }}
+                  </mat-panel-title>
+                  <mat-panel-description>
+                    Price for a night: ${{ room.roomPrice.toFixed(2) }}
+                  </mat-panel-description>
+                </mat-expansion-panel-header>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <!--image slider component will be here-->
+                <div style="width: 500px; height: 200px; margin: 0 auto">
+                  <app-image-slider [slides]="getSlidesForRoom(room.roomId)"></app-image-slider> <!--getSlidesForRoom(availability.roomId)-->
+                </div>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <br/>
+                <p>Description: {{ room.description || 'No room description available' }}</p>
+                <p>Number of adults: {{ room.numAdults }}</p>
+                <p>Number of children: {{room.numChildren}}</p>
+                <br/>
+                <button mat-raised-button color="primary" (click)="addPhotoToRoom(hotelId, room.roomId)">+ Add photos</button><!--TODO: button to redirect to booking a room and Paypal api or Stripe-->
+                <button mat-stroked-button (click)="updateRoom(room.roomId)">Update room</button>
+                <button mat-stroked-button color="warn" (click)="deleteRoom(hotelId, room.roomId)">Detele room</button>
+              </mat-expansion-panel>
+            </mat-accordion>
+          </mat-list-item>
+        </div>
+    </div>
   </div>
 
   <div *ngIf="!rooms || rooms.length === 0">
